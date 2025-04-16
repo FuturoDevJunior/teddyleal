@@ -1,0 +1,23 @@
+{
+  "services": [
+    {
+      "name": "backend",
+      "startCommand": "npm run start",
+      "env": {
+        "DATABASE_URL": "postgresql://usuario:senha@host:porta/banco",
+        "JWT_SECRET": "sua_chave_jwt_segura",
+        "REFRESH_SECRET": "refresh_secret_seguro",
+        "PORT": "3333"
+      }
+    },
+    {
+      "name": "iam",
+      "startCommand": "npm run dev",
+      "env": {
+        "PORT": "4000",
+        "JWT_SECRET": "sua_chave_jwt_segura",
+        "DATABASE_URL": "postgresql://usuario:senha@host:porta/banco"
+      }
+    }
+  ]
+} 

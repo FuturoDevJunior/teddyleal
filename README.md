@@ -2,8 +2,8 @@
 
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/SEU_REPO/actions)
 [![Coverage](https://img.shields.io/badge/coverage-80%25%2B-blue)](#testes)
-[![Docker Ready](https://img.shields.io/badge/docker-ready-blue)](Dockerfile)
-[![Deploy Cloud](https://img.shields.io/badge/cloud-deploy-success-green)](#deploy-cloud)
+[![Docker Ready](https://img.shields.io/badge/docker-ready-blue)](https://docs.docker.com/get-started/)
+[![Deploy Cloud](https://img.shields.io/badge/cloud-deploy-success-green)](#deploy-cloud-com-railway)
 
 ---
 
@@ -63,7 +63,7 @@ Este repositório entrega uma solução completa, escalável e profissional para
    - Métricas: http://localhost:3000/metrics
    - Health: http://localhost:3000/health
 2. **Acesse a documentação da API:**
-   [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+   [Documentação Swagger (localhost)](http://localhost:3000/api-docs)
 3. **Rode os testes:**
    ```sh
    cd backend
@@ -78,8 +78,8 @@ Este repositório entrega uma solução completa, escalável e profissional para
 ## 🛠️ Como Rodar Localmente (Desenvolvimento)
 
 ### 1. Pré-requisitos
-- Docker e Docker Compose
-- Node.js 20.x (para desenvolvimento local)
+- [Docker e Docker Compose](https://docs.docker.com/get-docker/)
+- [Node.js 20.x](https://nodejs.org/) (para desenvolvimento local)
 
 ### 2. Subir todo o ambiente
 ```sh
@@ -105,6 +105,11 @@ Cada serviço possui seu próprio arquivo `.env.example`. Configure conforme nec
 - **iam/.env.example** — Segredos de autenticação, DB, etc.
 
 > Consulte cada README de serviço para detalhes específicos.
+
+**Importante:**
+- Nunca suba arquivos `.env` reais para o repositório.
+- Sempre confira e atualize os exemplos de variáveis.
+- No Railway, configure as variáveis manualmente conforme os exemplos.
 
 ---
 
@@ -133,8 +138,8 @@ Cada serviço possui seu próprio arquivo `.env.example`. Configure conforme nec
   - Relacione issues/tarefas
   - Aguarde revisão antes do merge
 - **Veja também:**
-  - [backend/CONTRIBUTING.md](./backend/CONTRIBUTING.md)
-  - [backend/README.md](./backend/README.md)
+  - [Guia de Contribuição](./backend/CONTRIBUTING.md)
+  - [Documentação Backend](./backend/README.md)
 
 ---
 
@@ -249,9 +254,9 @@ POST /api/v1/auth/login
 - **Como rodar só um serviço?**
   - Siga o README do serviço desejado.
 - **Como acessar a documentação da API?**
-  - http://localhost:3000/api-docs
+  - [Documentação Swagger (localhost)](http://localhost:3000/api-docs)
 - **Como contribuir?**
-  - Veja a seção [Padrões de Código e Contribuição](#padrões-de-código-e-contribuição) e os guias de cada serviço.
+  - Veja a seção [Padrões de Código e Contribuição](#padrões-de-código-arquitetura-e-contribuição) e os guias de cada serviço.
 - **Porta ocupada?**
   - Rode `docker-compose down` e tente novamente.
 - **Banco não conecta?**
@@ -266,14 +271,31 @@ POST /api/v1/auth/login
 ---
 
 ## 🔗 Links Úteis
-- [backend/README.md](./backend/README.md)
-- [backend/CONTRIBUTING.md](./backend/CONTRIBUTING.md)
-- [Documentação da API](http://localhost:3000/api-docs)
-- [Princípios SOLID](https://medium.com/luizalabs/solid-principles-eab4be2d8e1b)
-- [Clean Code](https://github.com/ryanmcdermott/clean-code-javascript)
+- [Documentação Backend](./backend/README.md)
+- [Guia de Contribuição](./backend/CONTRIBUTING.md)
+- [Documentação Swagger (localhost)](http://localhost:3000/api-docs)
+- [Princípios SOLID — Artigo externo](https://medium.com/luizalabs/solid-principles-eab4be2d8e1b)
+- [Clean Code — Guia externo](https://github.com/ryanmcdermott/clean-code-javascript)
 
 ---
 
 > Dúvidas ou sugestões? Abra uma issue ou envie um PR!
 > 
-> **Contato:** Gabriel Ferreira — [LinkedIn](https://www.linkedin.com/in/devferreirag/) — devferreirag@gmail.com 
+> **Contato:** Gabriel Ferreira — [LinkedIn](https://www.linkedin.com/in/DevFerreiraG/) — Contato.FerreiraG@outlook.com
+
+---
+
+## ☁️ Deploy Cloud com Railway
+
+O deploy pode ser realizado facilmente via [Railway](https://railway.app/):
+
+1. **Conecte o repositório ao Railway**
+   - Crie um novo projeto em https://railway.app/
+   - Conecte este repositório via GitHub
+2. **Configure as variáveis de ambiente**
+   - Para cada serviço (`backend`, `iam`), configure as variáveis conforme os arquivos `.env.example` de cada pasta
+3. **Deploy**
+   - O Railway detecta automaticamente o arquivo `railway.json` e cria os serviços
+   - Acompanhe os logs e URLs geradas
+
+> Consulte o arquivo `railway.json` na raiz para detalhes de configuração dos serviços. 
