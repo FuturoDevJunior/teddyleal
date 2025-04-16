@@ -1,0 +1,71 @@
+services:
+  db:
+    image: postgres:15
+    container_name: url_shortener_db
+    restart: always
+    environment:
+      POSTGRES_USER: urlshortener
+      POSTGRES_PASSWORD: urlshortener
+      POSTGRES_DB: urlshortener
+    ports:
+      - '5433:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - url_shortener_net
+
+  backend:
+    build:
+      context: ./backend
+    container_name: url_shortener_backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    ports:
+      - '3333:3333'
+    depends_on:
+      - db
+    networks:
+      - url_shortener_net
+    command: sh -c 'npx prisma migrate deploy && npm run start'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3333/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  iam:
+    image: node:20-alpine
+    container_name: url_shortener_iam
+    working_dir: /app
+    volumes:
+      - ./iam:/app
+    command: sh -c 'npm install && npm run dev'
+    environment:
+      - PORT=4000
+    ports:
+      - '4000:4000'
+    networks:
+      - url_shortener_net
+    depends_on:
+      - db
+
+  krakend:
+    image: devopsfaith/krakend:2.3.2
+    container_name: url_shortener_gateway
+    volumes:
+      - ./krakend.json:/etc/krakend/krakend.json
+    ports:
+      - '8080:8080'
+    depends_on:
+      - backend
+      - iam
+    networks:
+      - url_shortener_net
+
+volumes:
+  db_data:
+
+networks:
+  url_shortener_net:
+    driver: bridge 

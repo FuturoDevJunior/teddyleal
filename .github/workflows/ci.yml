@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [backend, iam]
+    defaults:
+      run:
+        working-directory: ${{ matrix.service }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint
+        run: |
+          if [ -f eslint.config.mjs ]; then npx eslint . --ext .ts; fi
+
+      - name: Build (se aplicável)
+        run: |
+          if [ -f tsconfig.json ]; then npm run build; fi
+
+      - name: Testes (backend apenas)
+        if: matrix.service == 'backend'
+        run: npm test 
