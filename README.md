@@ -1,11 +1,30 @@
+<!-- Logo do Projeto -->
+<p align="center" style="margin-bottom: 8px;">
+  <img src="encurteddy.png" alt="Logo EncurTeddy" width="180" style="border-radius: 50%; box-shadow: 0 2px 8px #0002;"/>
+</p>
+
+<h1 align="center">🐻 <strong>EncurTeddy</strong></h1>
+
+<p align="center">
+  <b>Encurtador de URLs Profissional • Multi-Tenant • Observabilidade • Deploy Cloud</b>
+</p>
+
+<!-- Badges animados e reais -->
+<p align="center">
+  <a href="https://github.com/FuturoDevJunior/teddyleal/actions">
+    <img src="https://github.com/FuturoDevJunior/teddyleal/workflows/CI/badge.svg?branch=main" alt="Build Status"/>
+  </a>
+  <a href="https://codecov.io/gh/FuturoDevJunior/teddyleal">
+    <img src="https://codecov.io/gh/FuturoDevJunior/teddyleal/branch/main/graph/badge.svg" alt="Coverage"/>
+  </a>
+  <img src="https://img.shields.io/badge/docker-ready-blue?logo=docker&logoColor=white&style=flat-square" alt="Docker Ready"/>
+  <img src="https://img.shields.io/badge/cloud-Railway-success?logo=railway&logoColor=white&style=flat-square" alt="Railway Deploy"/>
+  <img src="https://img.shields.io/github/license/FuturoDevJunior/teddyleal?style=flat-square" alt="License"/>
+</p>
+
+<hr/>
+
 # 🚀 Encurtador de URLs — Teste Técnico Back-End & Monorepo Enterprise
-
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/SEU_REPO/actions)
-[![Coverage](https://img.shields.io/badge/coverage-80%25%2B-blue)](#testes)
-[![Docker Ready](https://img.shields.io/badge/docker-ready-blue)](https://docs.docker.com/get-started/)
-[![Deploy Cloud](https://img.shields.io/badge/cloud-deploy-success-green)](#deploy-cloud-com-railway)
-
----
 
 > **Desenvolvido por Gabriel Ferreira para o processo seletivo Back-End — Teddy (Tabata Leal)**
 
@@ -13,7 +32,30 @@
 
 ## ✨ Visão Geral
 
-Este repositório entrega uma solução completa, escalável e profissional para encurtamento de URLs, autenticação, multi-tenant, observabilidade e infraestrutura como código. O projeto foi desenhado para demonstrar domínio em arquitetura de APIs REST, Clean Code, SOLID, automação, escalabilidade horizontal, testes e práticas de engenharia modernas.
+Solução completa, escalável e profissional para encurtamento de URLs, autenticação, multi-tenant, observabilidade e infraestrutura como código. Demonstra domínio em arquitetura de APIs REST, Clean Code, SOLID, automação, escalabilidade horizontal, testes e práticas de engenharia modernas.
+
+---
+
+## 🧰 Tecnologias Utilizadas
+
+| Stack         | Tecnologias principais                                                                 |
+|--------------|----------------------------------------------------------------------------------------|
+| **Back-End** | Node.js, Express, TypeScript, Prisma, JWT, OpenAPI                                    |
+| **IAM**      | Node.js, Express, JWT                                                                 |
+| **Infra**    | Docker, Docker Compose, Kubernetes (K8s), Terraform, Railway, KrakenD (API Gateway)   |
+| **Observab.**| Prometheus, Jaeger, OpenTelemetry, Winston (logs)                                     |
+| **CI/CD**    | GitHub Actions, Husky                                                                 |
+
+---
+
+## 🏆 Diferenciais do Projeto
+
+- **Multi-Tenant**: Isolamento de dados por empresa via header `x-tenant-id`.
+- **Observabilidade Completa**: Logs estruturados, métricas Prometheus, tracing Jaeger/OpenTelemetry.
+- **Infraestrutura como Código**: Deploy local (Docker Compose), cloud (Railway), K8s e Terraform.
+- **Clean Code & SOLID**: Código modular, testável e extensível.
+- **Documentação Profissional**: OpenAPI, exemplos, scripts e FAQ.
+- **CI/CD Automatizado**: Testes, lint, build e versionamento semântico.
 
 ---
 
@@ -50,32 +92,7 @@ Este repositório entrega uma solução completa, escalável e profissional para
 
 ---
 
-## 🚦 Como Avaliar e Executar
-
-1. **Suba o ambiente completo:**
-   ```sh
-   docker-compose up --build
-   ```
-   - API Gateway: http://localhost:8080
-   - Backend: http://localhost:3000
-   - IAM: http://localhost:4000
-   - Swagger: http://localhost:3000/api-docs
-   - Métricas: http://localhost:3000/metrics
-   - Health: http://localhost:3000/health
-2. **Acesse a documentação da API:**
-   [Documentação Swagger (localhost)](http://localhost:3000/api-docs)
-3. **Rode os testes:**
-   ```sh
-   cd backend
-   npm test
-   ```
-4. **Valide diferenciais:**
-   - Multi-tenant: use o header `x-tenant-id`
-   - Observabilidade: acesse `/metrics` e configure tracing via variáveis de ambiente
-
----
-
-## 🛠️ Como Rodar Localmente (Desenvolvimento)
+## 🚦 Como Executar Localmente
 
 ### 1. Pré-requisitos
 - [Docker e Docker Compose](https://docs.docker.com/get-docker/)
