@@ -1,28 +1,64 @@
-<!-- Logo do Projeto -->
-<p align="center" style="margin-bottom: 8px;">
-  <img src="encurteddy.png" alt="Logo EncurTeddy" width="180" style="border-radius: 50%; box-shadow: 0 2px 8px #0002;"/>
+<!-- HERO VISUAL -->
+<p align="center" style="margin-bottom: 0;">
+  <img src="encurteddy.png" alt="Logo EncurTeddy" width="160" style="border-radius: 50%; box-shadow: 0 2px 16px #0003; margin-bottom: 0;"/>
 </p>
 
-<h1 align="center">🐻 <strong>EncurTeddy</strong></h1>
+<div align="center" style="margin-top: -12px;">
+  <h1 style="font-size: 2.8rem; font-weight: bold; margin-bottom: 0;">🐻 <span style="color:#7B3FE4;">EncurTeddy</span></h1>
+  <p style="font-size: 1.2rem; color: #555; margin-top: 0;">
+    <strong>Encurtador de URLs Profissional • Multi-Tenant • Observabilidade • Deploy Cloud</strong>
+  </p>
+</div>
 
-<p align="center">
-  <b>Encurtador de URLs Profissional • Multi-Tenant • Observabilidade • Deploy Cloud</b>
-</p>
-
-<!-- Badges animados e reais -->
-<p align="center">
-  <a href="https://github.com/FuturoDevJunior/teddyleal/actions">
-    <img src="https://github.com/FuturoDevJunior/teddyleal/workflows/CI/badge.svg?branch=main" alt="Build Status"/>
+<!-- BADGES AGRUPADOS -->
+<p align="center" style="margin-top: 0;">
+  <!-- Build Status -->
+  <a href="https://github.com/FuturoDevJunior/teddyleal/actions" title="Status do Build (GitHub Actions)">
+    <img src="https://img.shields.io/github/actions/workflow/status/FuturoDevJunior/teddyleal/ci.yml?branch=main&label=build&logo=github&style=flat-square&color=4CAF50" alt="Build Status"/>
   </a>
-  <a href="https://codecov.io/gh/FuturoDevJunior/teddyleal">
-    <img src="https://codecov.io/gh/FuturoDevJunior/teddyleal/branch/main/graph/badge.svg" alt="Coverage"/>
+  <!-- Coverage -->
+  <a href="https://codecov.io/gh/FuturoDevJunior/teddyleal" title="Cobertura de Testes (Codecov)">
+    <img src="https://img.shields.io/codecov/c/github/FuturoDevJunior/teddyleal?style=flat-square&logo=codecov&color=7B3FE4" alt="Coverage"/>
   </a>
-  <img src="https://img.shields.io/badge/docker-ready-blue?logo=docker&logoColor=white&style=flat-square" alt="Docker Ready"/>
-  <img src="https://img.shields.io/badge/cloud-Railway-success?logo=railway&logoColor=white&style=flat-square" alt="Railway Deploy"/>
-  <img src="https://img.shields.io/github/license/FuturoDevJunior/teddyleal?style=flat-square" alt="License"/>
+  <!-- Deploy/Cloud Status (Railway) -->
+  <a href="https://railway.app/project/teddyleal" title="Deploy Cloud Railway">
+    <img src="https://img.shields.io/badge/railway-deploy-0B0D0E?logo=railway&logoColor=white&style=flat-square" alt="Railway Deploy"/>
+  </a>
+  <!-- Docker -->
+  <a href="https://hub.docker.com/" title="Docker Ready">
+    <img src="https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white&style=flat-square" alt="Docker Ready"/>
+  </a>
+  <!-- Issues abertas -->
+  <a href="https://github.com/FuturoDevJunior/teddyleal/issues" title="Issues Abertas">
+    <img src="https://img.shields.io/github/issues/FuturoDevJunior/teddyleal?style=flat-square&label=issues&color=FF9800&logo=github" alt="Issues"/>
+  </a>
+  <!-- Node Version -->
+  <a href="https://nodejs.org/" title="Node.js Version">
+    <img src="https://img.shields.io/badge/node-%3E=20.x-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js Version"/>
+  </a>
+  <!-- License -->
+  <a href="https://github.com/FuturoDevJunior/teddyleal/blob/main/LICENSE" title="Licença MIT">
+    <img src="https://img.shields.io/badge/license-MIT-222?style=flat-square&logo=github" alt="License: MIT"/>
+  </a>
 </p>
 
-<hr/>
+<hr style="border: none; border-top: 2px solid #eee; margin: 24px 0;"/>
+
+<!-- SUMÁRIO VISUAL EM CARDS -->
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><a href="#visão-geral">✨<br><b>Visão Geral</b></a></td>
+      <td align="center"><a href="#demonstração-rápida">🚦<br><b>Demonstração</b></a></td>
+      <td align="center"><a href="#tecnologias-utilizadas">🧰<br><b>Tecnologias</b></a></td>
+      <td align="center"><a href="#diferenciais-do-projeto">🏆<br><b>Diferenciais</b></a></td>
+      <td align="center"><a href="#arquitetura--componentes">🏗️<br><b>Arquitetura</b></a></td>
+      <td align="center"><a href="#como-executar-localmente">🚀<br><b>Execução</b></a></td>
+      <td align="center"><a href="#faq">❓<br><b>FAQ</b></a></td>
+      <td align="center"><a href="#contato-e-suporte">📬<br><b>Contato</b></a></td>
+    </tr>
+  </table>
+</div>
 
 ## 📑 Sumário
 
@@ -122,6 +158,22 @@ Solução completa, escalável e profissional para encurtamento de URLs, autenti
 - **.github/** — Workflows de CI/CD
 - **krakend.json** — Configuração do API Gateway (KrakenD)
 - **docker-compose.yml** — Orquestração local de todos os serviços
+
+<!-- DIAGRAMA DE ARQUITETURA (ASCII) -->
+<div align="center">
+
+```
+┌────────────┐      ┌──────────────┐      ┌─────────────┐
+│   Usuário  │ <--> │ KrakenD API  │ <--> │   Backend   │
+└────────────┘      │  Gateway     │      └─────┬───────┘
+                    └──────┬───────┘            │
+                           │                    │
+                  ┌────────▼───────┐    ┌───────▼───────┐
+                  │   IAM Service  │    │  PostgreSQL   │
+                  └───────────────┘    └───────────────┘
+```
+
+</div>
 
 ```
 [Usuário] ⇄ [KrakenD API Gateway] ⇄ [Backend] ⇄ [PostgreSQL]
@@ -255,6 +307,23 @@ POST /api/v1/auth/login
 ```
 - Resposta: `{ "token": "..." }`
 
+> ℹ️ **Dica:** Use o [Swagger](http://localhost:3000/api-docs) para testar todos os endpoints de forma interativa!
+
+<!-- BLOCOS DE CÓDIGO COM DESTAQUE VISUAL -->
+<div style="border: 1.5px solid #7B3FE4; border-radius: 8px; background: #f8f6fc; padding: 12px; margin-bottom: 16px;">
+
+```bash
+# 1. Encurtar uma URL (substitua <token> se necessário)
+curl -X POST http://localhost:3000/api/v1/shorten \
+  -H 'Content-Type: application/json' \
+  -d '{"originalUrl": "https://exemplo.com"}'
+
+# 2. Redirecionar (acessar a URL encurtada)
+curl -v http://localhost:3000/aZbKq7
+```
+
+</div>
+
 ---
 
 ## 🔒 Autenticação e Multi-Tenant
@@ -383,4 +452,20 @@ O deploy pode ser realizado facilmente via [Railway](https://railway.app/):
    - O Railway detecta automaticamente o arquivo `railway.json` e cria os serviços
    - Acompanhe os logs e URLs geradas
 
-> Consulte o arquivo `railway.json` na raiz para detalhes de configuração dos serviços. 
+> Consulte o arquivo `railway.json` na raiz para detalhes de configuração dos serviços.
+
+---
+
+<!-- RODAPÉ VISUAL E CONTATO -->
+<div align="center" style="margin-top: 32px; margin-bottom: 0;">
+  <img src="encurteddy.png" alt="Logo EncurTeddy" width="80" style="border-radius: 50%; box-shadow: 0 2px 8px #0002; margin-bottom: 8px;"/>
+  <h3>Gabriel Ferreira</h3>
+  <p>
+    <a href="https://www.linkedin.com/in/DevFerreiraG/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+    <a href="mailto:Contato.FerreiraG@outlook.com"><img src="https://img.shields.io/badge/Email-0078D4?style=flat-square&logo=microsoft-outlook&logoColor=white" alt="Email"/></a>
+    <a href="https://github.com/FuturoDevJunior/teddyleal" target="_blank"><img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+  </p>
+  <p><strong>Dúvidas, sugestões ou parcerias? <br> Fique à vontade para entrar em contato ou abrir uma <a href="https://github.com/FuturoDevJunior/teddyleal/issues">issue</a>!</strong></p>
+</div>
+
+--- 
