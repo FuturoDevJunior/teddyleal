@@ -49,7 +49,6 @@
   <table>
     <tr>
       <td align="center"><a href="#visão-geral">✨<br><b>Visão Geral</b></a></td>
-      <td align="center"><a href="#demonstração-rápida">🚦<br><b>Demonstração</b></a></td>
       <td align="center"><a href="#tecnologias-utilizadas">🧰<br><b>Tecnologias</b></a></td>
       <td align="center"><a href="#diferenciais-do-projeto">🏆<br><b>Diferenciais</b></a></td>
       <td align="center"><a href="#arquitetura--componentes">🏗️<br><b>Arquitetura</b></a></td>
@@ -63,7 +62,6 @@
 ## 📑 Sumário
 
 - [Visão Geral](#visão-geral)
-- [Demonstração Rápida](#demonstração-rápida)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Diferenciais do Projeto](#diferenciais-do-projeto)
 - [Requisitos Atendidos](#requisitos-atendidos)
