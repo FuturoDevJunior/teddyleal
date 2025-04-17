@@ -38,3 +38,15 @@ jobs:
       - name: Testes (backend apenas)
         if: matrix.service == 'backend'
         run: npm test 
+      - name: Upload coverage to Codecov
+        if: matrix.service == 'backend'
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: Testes (iam apenas)
+        if: matrix.service == 'iam'
+        run: npm test 

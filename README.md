@@ -24,9 +24,47 @@
 
 <hr/>
 
-# 🚀 Encurtador de URLs — Teste Técnico Back-End & Monorepo Enterprise
+## 📑 Sumário
 
-> **Desenvolvido por Gabriel Ferreira para o processo seletivo Back-End — Teddy (Tabata Leal)**
+- [Visão Geral](#visão-geral)
+- [Demonstração Rápida](#demonstração-rápida)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Diferenciais do Projeto](#diferenciais-do-projeto)
+- [Requisitos Atendidos](#requisitos-atendidos)
+- [Arquitetura & Componentes](#arquitetura--componentes)
+- [Como Executar Localmente](#como-executar-localmente)
+- [Configuração de Variáveis de Ambiente](#configuração-de-variáveis-de-ambiente)
+- [Scripts e Comandos Úteis](#scripts-e-comandos-úteis)
+- [Padrões de Código, Arquitetura e Contribuição](#padrões-de-código-arquitetura-e-contribuição)
+- [Endpoints Principais e Exemplos de Uso](#endpoints-principais-e-exemplos-de-uso)
+- [Autenticação e Multi-Tenant](#autenticação-e-multi-tenant)
+- [Observabilidade e Instrumentação](#observabilidade-e-instrumentação)
+- [Deploy Cloud, Kubernetes e Terraform](#deploy-cloud-kubernetes-e-terraform)
+- [CI/CD, Hooks e Qualidade](#cicd-hooks-e-qualidade)
+- [Pontos de Melhoria e Escalabilidade](#pontos-de-melhoria-e-escalabilidade)
+- [FAQ](#faq)
+- [Links Úteis](#-links-úteis)
+- [Roadmap](#roadmap)
+- [Licença](#licença)
+- [Contato e Suporte](#contato-e-suporte)
+
+---
+
+## 🚦 Demonstração Rápida
+
+Veja como encurtar e acessar uma URL em segundos:
+
+```bash
+# 1. Encurtar uma URL (substitua <token> se necessário)
+curl -X POST http://localhost:3000/api/v1/shorten \
+  -H 'Content-Type: application/json' \
+  -d '{"originalUrl": "https://exemplo.com"}'
+
+# 2. Redirecionar (acessar a URL encurtada)
+curl -v http://localhost:3000/aZbKq7
+```
+
+> Para mais exemplos, veja a seção [Endpoints Principais e Exemplos de Uso](#endpoints-principais-e-exemplos-de-uso).
 
 ---
 
@@ -154,6 +192,12 @@ Cada serviço possui seu próprio arquivo `.env.example`. Configure conforme nec
   - Explique o contexto e objetivo
   - Relacione issues/tarefas
   - Aguarde revisão antes do merge
+- **Como contribuir:**
+  1. Faça um fork do repositório
+  2. Crie uma branch (`git checkout -b feature/nome-feature`)
+  3. Commit suas mudanças (`git commit -m 'feat: minha feature'`)
+  4. Push na branch (`git push origin feature/nome-feature`)
+  5. Abra um Pull Request
 - **Veja também:**
   - [Guia de Contribuição](./backend/CONTRIBUTING.md)
   - [Documentação Backend](./backend/README.md)
@@ -288,17 +332,41 @@ POST /api/v1/auth/login
 ---
 
 ## 🔗 Links Úteis
-- [Documentação Backend](./backend/README.md)
-- [Guia de Contribuição](./backend/CONTRIBUTING.md)
-- [Documentação Swagger (localhost)](http://localhost:3000/api-docs)
-- [Princípios SOLID — Artigo externo](https://medium.com/luizalabs/solid-principles-eab4be2d8e1b)
-- [Clean Code — Guia externo](https://github.com/ryanmcdermott/clean-code-javascript)
+
+- [Documentação da API (Swagger)](http://localhost:3000/api-docs) — Teste e explore todos os endpoints da API.
+- [Documentação do Backend](./backend/README.md) — Guia completo de uso, arquitetura e endpoints.
+- [Guia de Contribuição](./backend/CONTRIBUTING.md) — Como contribuir, padrões de código e fluxo de PRs.
+- [Arquivo de Deploy Railway](./railway.json) — Configuração para deploy cloud.
+- [Orquestração Docker Compose](./docker-compose.yml) — Suba todo o ambiente localmente.
+- [Configuração do API Gateway (KrakenD)](./krakend.json) — Gateway de APIs.
+- [Changelog do Projeto](./CHANGELOG.md) — Histórico de versões e mudanças.
+- [Deploy Cloud com Railway](https://railway.app/) — Plataforma recomendada para deploy rápido e fácil.
+- [Repositório no GitHub](https://github.com/FuturoDevJunior/teddyleal) — Código-fonte, issues e releases.
+- [Contato do Autor — Gabriel Ferreira (LinkedIn)](https://www.linkedin.com/in/DevFerreiraG/) — Dúvidas, sugestões ou parcerias.
 
 ---
 
-> Dúvidas ou sugestões? Abra uma issue ou envie um PR!
-> 
-> **Contato:** Gabriel Ferreira — [LinkedIn](https://www.linkedin.com/in/DevFerreiraG/) — Contato.FerreiraG@outlook.com
+## 🛣️ Roadmap
+
+- [ ] Integração com cache distribuído (Redis)
+- [ ] Rate limit global e autenticação distribuída
+- [ ] Deploy multi-região e balanceamento de carga
+- [ ] Sessão distribuída, cache, mensageria, monitoramento centralizado
+- [ ] Interface web para gerenciamento dos links
+- [ ] Internacionalização (README e API)
+
+---
+
+## 📝 Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
+
+---
+
+## 📬 Contato e Suporte
+
+- Dúvidas ou sugestões? Abra uma [issue](https://github.com/FuturoDevJunior/teddyleal/issues) ou envie um PR!
+- Contato direto: Gabriel Ferreira — [LinkedIn](https://www.linkedin.com/in/DevFerreiraG/) — Contato.FerreiraG@outlook.com
 
 ---
 
