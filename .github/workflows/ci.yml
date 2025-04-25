@@ -29,7 +29,7 @@ jobs:
 
       - name: Lint
         run: |
-          if [ -f eslint.config.mjs ]; then npx eslint . --ext .ts; fi
+          if [ -f eslint.config.mjs ]; then npx eslint .; fi
 
       - name: Build (se aplicável)
         run: |
