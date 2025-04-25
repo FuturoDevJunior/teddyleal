@@ -65,6 +65,7 @@
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Diferenciais do Projeto](#diferenciais-do-projeto)
 - [Requisitos Atendidos](#requisitos-atendidos)
+- [Possíveis Features Futuras](#possíveis-features-futuras)
 - [Arquitetura & Componentes](#arquitetura--componentes)
 - [Como Executar Localmente](#como-executar-localmente)
 - [Configuração de Variáveis de Ambiente](#configuração-de-variáveis-de-ambiente)
@@ -145,6 +146,122 @@ Solução completa, escalável e profissional para encurtamento de URLs, autenti
 | Deploy via Docker Compose, K8s, Terraform | ✅ |
 | Testes automatizados, CI/CD, hooks, versionamento, documentação OpenAPI | ✅ |
 
+## 🚀 Possíveis Features Futuras
+
+Abaixo estão sugestões de funcionalidades que podem ser implementadas para evoluir o EncurTeddy:
+
+- **Painel do Usuário (Dashboard):** Visualização de URLs, estatísticas de cliques, filtros e busca.
+- **Expiração Personalizada de URLs:** Definir data/hora de expiração ao criar uma URL.
+- **Customização de ShortCode:** Usuário pode escolher o código encurtado, com validação de unicidade.
+- **Analytics Avançado:** Gráficos de cliques, origem geográfica, dispositivos, exportação de relatórios.
+- **Proteção por Senha:** URLs encurtadas podem exigir senha para redirecionamento.
+- **Integração com Webhooks:** Notificações externas a cada clique, criação ou expiração de URL.
+- **API Key para Integração:** Geração de API Keys para uso programático seguro da API.
+- **Suporte a Multi-Tenant Avançado:** Isolamento de dados por organização, admins e usuários por tenant.
+- **Shortener para Arquivos:** Upload de arquivos pequenos e geração de links curtos para download.
+- **Blacklist/Whitelist de Domínios:** Bloquear domínios maliciosos ou permitir apenas domínios autorizados.
+- **QR Code Dinâmico:** Gerar QR Code para cada URL encurtada, com tracking de escaneamentos.
+- **Limite de Uso e Planos:** Diferentes limites de uso por plano, integração com sistemas de pagamento.
+- **Notificações e Alertas:** E-mail ou push para eventos como expiração ou número de cliques.
+- **Admin Dashboard:** Gerenciamento de usuários, URLs, monitoramento de abuso, estatísticas globais.
+- **Melhorias de Segurança:** 2FA, rate limit adaptativo, monitoramento de tentativas de ataque.
+
+## 🛣️ Roadmap Visual do Projeto
+
+O roadmap abaixo apresenta a evolução planejada e realizada do EncurTeddy, agrupando entregas por temas e releases. Cada item possui status visual para facilitar acompanhamento e priorização.
+
+### Legenda de Status
+- ✅ Feito
+- 🚧 Em andamento
+- 🕒 Planejado
+
+### Roadmap Geral
+
+| Tema/Release                | Feature/Entrega                                         | Status |
+|----------------------------|--------------------------------------------------------|:------:|
+| **MVP**                    | Cadastro e autenticação de usuários (IAM)              | ✅     |
+|                            | Encurtamento de URLs (máx. 6 caracteres)               | ✅     |
+|                            | Associação de URLs a usuários autenticados             | ✅     |
+|                            | Listagem, edição, exclusão lógica, contabilização      | ✅     |
+|                            | Soft delete e controle de timestamps                   | ✅     |
+|                            | Multi-tenant (header `x-tenant-id`)                    | ✅     |
+|                            | Documentação OpenAPI/Swagger                           | ✅     |
+|                            | Testes automatizados (unitário/integr.)                | ✅     |
+|                            | CI/CD, hooks, versionamento, cobertura                 | ✅     |
+| **Observabilidade**        | Logs estruturados (Winston)                            | ✅     |
+|                            | Métricas Prometheus                                    | ✅     |
+|                            | Tracing Jaeger/OpenTelemetry                           | ✅     |
+| **Infraestrutura**         | Deploy local (Docker Compose)                          | ✅     |
+|                            | Deploy cloud (Railway)                                 | ✅     |
+|                            | Kubernetes (manifests)                                 | ✅     |
+|                            | Terraform (infraestrutura como código)                 | ✅     |
+|                            | API Gateway (KrakenD)                                  | ✅     |
+| **Segurança**              | Rate limit por endpoint sensível                       | ✅     |
+|                            | JWT seguro, variáveis via .env                         | ✅     |
+|                            | Blacklist/Whitelist de domínios                        | 🕒     |
+|                            | Proteção por senha nas URLs                            | 🕒     |
+|                            | 2FA para login                                         | 🕒     |
+| **Analytics & Dashboard**  | Painel do usuário (dashboard)                          | 🕒     |
+|                            | Analytics avançado (cliques, origem, exportação)       | 🕒     |
+|                            | QR Code dinâmico para URLs                             | 🕒     |
+| **Expansão de Produto**    | Customização de ShortCode                              | 🕒     |
+|                            | Expiração personalizada de URLs                        | 🕒     |
+|                            | Notificações e alertas (e-mail, push)                  | 🕒     |
+|                            | Integração com webhooks                                | 🕒     |
+|                            | API Key para integração                                | 🕒     |
+|                            | Shortener para arquivos                                | 🕒     |
+|                            | Limite de uso e planos                                 | 🕒     |
+|                            | Admin dashboard                                        | 🕒     |
+| **Escalabilidade**         | Cache distribuído (Redis) para contadores              | 🕒     |
+|                            | Rate limit global/distribuído                          | 🕒     |
+|                            | Deploy multi-região, balanceamento de carga            | 🕒     |
+|                            | Sessão distribuída, mensageria, monitoramento central  | 🕒     |
+| **Internacionalização**    | Interface e docs multilíngue                           | 🕒     |
+
+---
+
+### Fluxograma de Evolução
+
+```text
+MVP
+│
+├── Autenticação (IAM) ──┬─ Cadastro/Login
+│                        └─ JWT, Multi-Tenant
+├── Encurtamento         ──┬─ Criar/Redirecionar URL
+│                        └─ Listar/Editar/Excluir
+├── Observabilidade      ──┬─ Logs
+│                        ├─ Métricas
+│                        └─ Tracing
+├── Infraestrutura       ──┬─ Docker Compose
+│                        ├─ Railway
+│                        ├─ K8s
+│                        └─ Terraform
+│
+├── Segurança            ──┬─ Rate Limit
+│                        └─ JWT seguro
+│
+├── Analytics & Dashboard (futuro)
+│   ├─ Dashboard
+│   ├─ Analytics avançado
+│   └─ QR Code
+│
+├── Expansão de Produto (futuro)
+│   ├─ Customização de ShortCode
+│   ├─ Expiração personalizada
+│   ├─ Notificações/Webhooks
+│   ├─ API Key
+│   ├─ Shortener para arquivos
+│   └─ Admin dashboard
+│
+├── Escalabilidade (futuro)
+│   ├─ Cache distribuído
+│   ├─ Rate limit global
+│   ├─ Multi-região
+│   └─ Sessão distribuída
+│
+└── Internacionalização (futuro)
+```
+
 ---
 
 ## 🏗️ Arquitetura & Componentes
@@ -186,14 +303,16 @@ Solução completa, escalável e profissional para encurtamento de URLs, autenti
 - [Docker e Docker Compose](https://docs.docker.com/get-docker/)
 - [Node.js 20.x](https://nodejs.org/) (para desenvolvimento local)
 
-### 2. Subir todo o ambiente
+### 2. Subir todo o ambiente (recomendado)
 ```sh
 docker-compose up --build
 ```
 
-### 3. Desenvolvimento local de um serviço
+### 3. Desenvolvimento local de cada serviço
+
+#### Backend
 ```sh
-cd backend # ou iam
+cd backend
 npm install
 cp .env.example .env # configure as variáveis
 npx prisma migrate dev --name init # apenas backend
@@ -201,34 +320,47 @@ npx prisma generate # apenas backend
 npm run dev
 ```
 
+#### IAM
+```sh
+cd iam
+npm install
+cp .env.example .env # configure as variáveis
+npm run dev
+```
+
+### 4. Testes
+
+#### Backend (testes reais)
+```sh
+cd backend
+npm test
+```
+
+#### IAM (placeholder, sempre retorna sucesso)
+```sh
+cd iam
+npm test
+# Saída esperada: "No tests yet"
+```
+
 ---
 
-## ⚙️ Configuração de Variáveis de Ambiente
+## 🚦 CI/CD Automatizado
 
-Cada serviço possui seu próprio arquivo `.env.example`. Configure conforme necessário:
-- **backend/.env.example** — Banco, JWT, CORS, métricas, tracing
-- **iam/.env.example** — Segredos de autenticação, DB, etc.
+O EncurTeddy utiliza GitHub Actions para garantir qualidade, automação e entrega contínua:
 
-> Consulte cada README de serviço para detalhes específicos.
+- **CI (`.github/workflows/ci.yml`):**
+  - Executa build, lint e testes automatizados para todos os serviços (`backend`, `iam`) a cada push/PR na branch `main`.
+  - Utiliza cache de dependências para acelerar builds.
+  - Envia cobertura de testes do backend para o Codecov.
+  - O script `test` do IAM é um placeholder para garantir sucesso no CI/CD até que testes reais sejam implementados.
+  - O ESLint está configurado para projetos modernos (eslint.config.mjs), sem a flag `--ext`.
 
-**Importante:**
-- Nunca suba arquivos `.env` reais para o repositório.
-- Sempre confira e atualize os exemplos de variáveis.
-- No Railway, configure as variáveis manualmente conforme os exemplos.
+- **Docker Publish (`.github/workflows/docker-publish.yml`):**
+  - Builda e publica imagens Docker para `backend` e `iam` no Docker Hub a cada push na `main` ou criação de tag de release.
+  - Imagens são versionadas e também publicadas como `latest`.
 
----
-
-## 📜 Scripts e Comandos Úteis
-
-| Comando | Descrição |
-|---------|-----------|
-| `docker-compose up --build` | Sobe todo o ambiente |
-| `docker-compose down` | Para e remove containers |
-| `npm run dev` | Dev backend/iam |
-| `npm run lint` | Lint estrito |
-| `npm test` | Testes unitários |
-| `npx prisma migrate dev` | Migrations (backend) |
-| `npx prisma generate` | Gera client Prisma (backend) |
+> Para detalhes, consulte os arquivos em `.github/workflows/` ou o [repositório no GitHub](https://github.com/FuturoDevJunior/teddyleal).
 
 ---
 
@@ -251,6 +383,23 @@ Cada serviço possui seu próprio arquivo `.env.example`. Configure conforme nec
 - **Veja também:**
   - [Guia de Contribuição](./backend/CONTRIBUTING.md)
   - [Documentação Backend](./backend/README.md)
+
+## 🚦 CI/CD Automatizado
+
+O EncurTeddy utiliza GitHub Actions para garantir qualidade, automação e entrega contínua:
+
+- **CI (`.github/workflows/ci.yml`):**
+  - Executa build, lint e testes automatizados para todos os serviços (`backend`, `iam`) a cada push/PR na branch `main`.
+  - Utiliza cache de dependências para acelerar builds.
+  - Envia cobertura de testes do backend para o Codecov.
+  - O script `test` do IAM é um placeholder para garantir sucesso no CI/CD até que testes reais sejam implementados.
+  - O ESLint está configurado para projetos modernos (eslint.config.mjs), sem a flag `--ext`.
+
+- **Docker Publish (`.github/workflows/docker-publish.yml`):**
+  - Builda e publica imagens Docker para `backend` e `iam` no Docker Hub a cada push na `main` ou criação de tag de release.
+  - Imagens são versionadas e também publicadas como `latest`.
+
+> Para detalhes, consulte os arquivos em `.github/workflows/` ou o [repositório no GitHub](https://github.com/FuturoDevJunior/teddyleal).
 
 ---
 
@@ -451,6 +600,82 @@ O deploy pode ser realizado facilmente via [Railway](https://railway.app/):
    - Acompanhe os logs e URLs geradas
 
 > Consulte o arquivo `railway.json` na raiz para detalhes de configuração dos serviços.
+
+---
+
+## ✅ Checklist de Deploy — EncurTeddy
+
+### 1. Pré-requisitos
+- [ ] Docker e Docker Compose instalados **(ou ambiente cloud configurado)**
+- [ ] Node.js 20.x instalado (para builds locais)
+- [ ] Variáveis de ambiente revisadas e seguras (`.env` ou painel cloud)
+- [ ] Banco de dados provisionado e acessível (PostgreSQL)
+- [ ] Secrets/JWT configurados corretamente
+
+---
+
+### 2. Preparação do Projeto
+- [ ] Pull do código atualizado da branch principal (`main` ou `release`)
+- [ ] Validar que o pipeline do **GitHub Actions (CI/CD)** está passando para o commit/PR atual
+- [ ] Rodar `npm install` em todos os serviços (`backend`, `iam`)
+- [ ] Rodar `npx prisma generate` e `npx prisma migrate deploy` no backend
+- [ ] Validar `.env` de cada serviço (backend, iam, etc.)
+- [ ] Conferir configurações de CORS, domínios e portas
+
+---
+
+### 3. Build e Testes
+- [ ] Rodar `npm run build` em todos os serviços
+- [ ] Rodar `npm test` e garantir **100% dos testes passando**
+- [ ] Rodar `npm run lint` e corrigir eventuais avisos/erros
+- [ ] Validar cobertura mínima de testes (>80%)
+- [ ] Validar que o **cache de dependências** está funcionando no pipeline (ver logs do GitHub Actions)
+
+---
+
+### 4. Infraestrutura
+- [ ] Subir banco de dados (local ou cloud)
+- [ ] Subir serviços via `docker-compose up --build` **ou** via plataforma cloud (Railway, K8s, etc.)
+- [ ] Validar que todos os containers estão "healthy" (`docker ps` ou painel cloud)
+- [ ] Configurar volumes/persistência para banco de dados
+
+---
+
+### 5. Configuração de Observabilidade
+- [ ] Validar variáveis de observabilidade (`ENABLE_OBSERVABILITY`, `JAEGER_URL`, etc.)
+- [ ] Validar endpoints de métricas (`/metrics`) e tracing
+- [ ] Conferir logs estruturados (Winston) e integração com sistemas de log externos (se aplicável)
+
+---
+
+### 6. Validação Pós-Deploy
+- [ ] Testar endpoints principais via Postman/curl/Swagger
+- [ ] Validar autenticação, encurtamento, listagem, exclusão e redirecionamento
+- [ ] Testar cenários de erro (resposta JSON, sem HTML)
+- [ ] Validar multi-tenant (header `x-tenant-id`)
+- [ ] Validar métricas e tracing em produção
+
+---
+
+### 7. Segurança e Boas Práticas
+- [ ] Garantir que `.env** NÃO** está versionado
+- [ ] Validar rate limit em endpoints sensíveis
+- [ ] Validar HTTPS (em produção/cloud)
+- [ ] Validar que segredos/JWT não estão expostos em logs
+
+---
+
+### 8. Documentação e Comunicação
+- [ ] Atualizar README e documentação de endpoints
+- [ ] Comunicar stakeholders sobre o deploy
+- [ ] Registrar release no CHANGELOG.md
+
+---
+
+### 9. Monitoramento e Rollback
+- [ ] Monitorar logs e métricas após o deploy
+- [ ] Ter plano de rollback (ex: `docker-compose down` ou reverter release cloud)
+- [ ] Validar alertas de erro e performance
 
 ---
 
