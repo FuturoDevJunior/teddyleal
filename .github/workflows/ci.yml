@@ -35,6 +35,14 @@ jobs:
         run: |
           if [ -f tsconfig.json ]; then npm run build; fi
 
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: ${{ matrix.service }}/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles(format('{0}/package-lock.json', matrix.service)) }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Testes (backend apenas)
         if: matrix.service == 'backend'
         run: npm test 
